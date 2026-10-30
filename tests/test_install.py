@@ -40,13 +40,33 @@ class InstallTests(unittest.TestCase):
         self.assertEqual(sorted(self.project.rglob('*')),before)
 
     def test_core_installs_three_complete_skill_folders_only(self):
-        code,out,error=self.run_cli('--apply')
+        code,out,error=self.run_cli('--profile','core','--apply')
         self.assertEqual(code,0,error)
         self.assertEqual(set(self.installed()),set(installer.PROFILES['core']))
         manifest=installer.load_manifest()
         for skill in installer.choose(manifest,installer.PROFILES['core']):
             self.assertEqual(installer.inventory(self.project/'.agents/skills'/skill['name']),skill['files'])
         self.assertFalse(json.loads(out)['codex_discovery_verified'])
+
+    def test_default_installs_all_six_and_matches_manifest(self):
+        self.assertEqual(installer.load_manifest()['default_profile'],'all')
+        code,out,error=self.run_cli('--apply')
+        self.assertEqual(code,0,error)
+        self.assertEqual(set(self.installed()),set(installer.PROFILES['all']))
+        self.assertEqual(len(json.loads(out)['skills']),6)
+        self.assertFalse(json.loads(out)['codex_discovery_verified'])
+
+    def test_default_adds_optional_skills_after_existing_core(self):
+        self.assertEqual(self.run_cli('--profile','core','--apply')[0],0)
+        before={n:installer.inventory(self.project/'.agents/skills'/n) for n in self.installed()}
+        code,out,error=self.run_cli('--apply')
+        self.assertEqual(code,0,error)
+        self.assertEqual(set(self.installed()),set(installer.PROFILES['all']))
+        statuses={s['name']:s['action'] for s in json.loads(out)['skills']}
+        for name,files in before.items():
+            self.assertEqual(statuses[name],'already_identical')
+            self.assertEqual(installer.inventory(self.project/'.agents/skills'/name),files)
+        self.assertTrue(all(statuses[n]=='install' for n in ('frontend-design','diagnosing-bugs','api-tester')))
 
     def test_all_profile_installs_six_independent_skills(self):
         code,_,error=self.run_cli('--profile','all','--apply')

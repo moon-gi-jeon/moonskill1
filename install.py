@@ -128,7 +128,7 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--list', action='store_true', help='List packaged Skills; no installation')
     parser.add_argument('--project', help='Existing task project; never a global Skill directory')
-    parser.add_argument('--profile', choices=PROFILES, default='core')
+    parser.add_argument('--profile', choices=PROFILES, default=None)
     parser.add_argument('--skills', nargs='+', help='Explicit names; dependencies are included')
     parser.add_argument('--apply', action='store_true', help='Copy after preflight; otherwise dry run')
     args = parser.parse_args(argv)
@@ -141,7 +141,8 @@ def main(argv=None) -> int:
             return 0
         if not args.project:
             parser.error('--project is required for a dry run or install')
-        selected = choose(manifest, args.skills or PROFILES[args.profile])
+        profile = args.profile or manifest['default_profile']
+        selected = choose(manifest, args.skills or PROFILES[profile])
         project = Path(args.project).expanduser().resolve()
         planned = plan(project, selected)
         if args.apply:

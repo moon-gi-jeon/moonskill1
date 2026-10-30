@@ -1,12 +1,12 @@
 # moonskill1
 
-Codex용 소규모 Skill 모음. 작업에 필요한 지침만 선택해서 **현재 작업 프로젝트**에 등록합니다. 개인 모델 키·새 AI·MCP·Plugin·전역 설정·Codex 업데이트를 요구하지 않습니다. 개인이 관리하는 독립 도구 모음입니다.
+Codex용 소규모 Skill 모음. **기본 설치는 선정된 6개 전체(`all`)**를 현재 작업 프로젝트에 등록합니다. 실제 작업에서는 필요한 지침만 사용합니다. 개인 모델 키·새 AI·MCP·Plugin·전역 설정·Codex 업데이트를 요구하지 않습니다. 개인이 관리하는 독립 도구 모음입니다.
 
 ## Codex에 자연어로 한 번 요청하기
 
 아래는 일반 셸 명령이 아니라 **Codex 자연어 입력란**에 보낼 요청입니다.
 
-> 공개 저장소 https://github.com/moon-gi-jeon/moonskill1 의 README와 manifest.json을 확인해라. 현재 과제 프로젝트 위치를 확인하고 저장소를 별도 참고 폴더로 가져와라. 기본 core Skills를 현재 프로젝트의 .agents/skills에 등록해라. 기존 지침과 Skills를 덮어쓰지 말고 전역 설정·모델·인증·Codex 버전을 바꾸지 마라. 설치 파일과 해시를 확인하고, /skills 또는 $ 선택 목록에서 인식되는지 확인하라. 목록 확인을 수행할 수 없으면 파일 설치 성공과 인식 미확인을 구분해 보고하라. 그다음 grill-me와 grilling을 적용해 현재 과제의 중요한 미결정 사항만 짧게 점검해라.
+> 허용된 공개 HTTPS 경로로 https://github.com/moon-gi-jeon/moonskill1 의 README와 manifest.json을 읽어라. 현재 작업 프로젝트와 Codex의 Skill 탐색 경로를 확인하고, 선정된 6개 전체(all)를 프로젝트 .agents/skills에 설치해라. 기존 다른 파일·전역 설정·모델·인증·Codex 버전은 변경하지 마라. 파일 설치·해시 검증과 현재 Codex의 $ 목록 인식 여부를 구분해 간결히 보고해라. 지침 본문은 이후 작업에 필요한 것만 읽고 적용해라.
 
 **clone은 파일을 가져오는 작업, 설치/등록은 Codex가 찾는 프로젝트 경로에 놓는 작업, 호출은 해당 지침을 실제 사용하는 작업**입니다. 하위 폴더에 clone한 것만으로 기존 작업 세션이 모든 Skill을 발견한다고 가정하지 않습니다.
 
@@ -21,7 +21,7 @@ Codex용 소규모 Skill 모음. 작업에 필요한 지침만 선택해서 **�
 | `diagnosing-bugs` | 반복 오류 시 | 재현→원인 분리→수정→회귀 검사 |
 | `api-tester` | 업무 API 필요 시 | 허용 API의 문서·응답·페이지·오류 검사 |
 
-여러 Skill을 함께 보관·등록할 수 있으며 각 폴더는 별도 SKILL.md를 갖습니다. 등록된 모든 본문을 매 요청마다 전부 읽히지는 않습니다. 작업에 맞는 Skill만 호출합니다. 이 묶음의 `all`은 연결 검증용 선택지이며 기본안은 `core`입니다. API가 필요 없으면 api-tester는 설치하지 않습니다.
+여러 Skill을 함께 보관·등록할 수 있으며 각 폴더는 별도 SKILL.md를 갖습니다. 기본 `all`은 위 6개를 설치하고, `core`는 앞의 3개만 설치하는 선택 옵션입니다. 표의 ‘조건부’는 **실제 사용 시점**을 뜻합니다. API가 없으면 api-tester를 사용하지 않습니다. 등록된 모든 본문을 매 요청마다 전부 읽히지는 않습니다.
 
 ## 셸에서 수동 설치할 경우
 
@@ -33,7 +33,7 @@ python3 moonskill1-reference/install.py --project .
 python3 moonskill1-reference/install.py --project . --apply
 ```
 
-첫 실행은 dry run입니다. `--apply`를 붙이면 검증 후 복사합니다. 기본 3개만 설치하며 다른 내용의 동명 폴더는 보존하고 중단합니다. 필요할 때 추가합니다.
+첫 실행은 dry run입니다. `--apply`를 붙이면 검증 후 6개 전체를 복사합니다. 동일한 기존 core 파일은 보존하고 빠진 3개만 추가합니다. 다른 내용의 동명 폴더는 보존하고 중단합니다. 이미 받은 구버전 사본은 허용된 공개 경로로 최신 버전을 다시 확인해야 합니다. core만 원하면 `--profile core --apply`를 지정합니다. 필요한 것만 개별 추가할 수도 있습니다.
 
 ```sh
 python3 moonskill1-reference/install.py --project . --skills frontend-design --apply
@@ -41,7 +41,7 @@ python3 moonskill1-reference/install.py --project . --skills diagnosing-bugs --a
 python3 moonskill1-reference/install.py --project . --skills api-tester --apply
 ```
 
-가상 연결 검증에서 전체 6개를 설치하려면 `--profile all --apply`를 사용합니다. Python이 제공되지 않거나 설치 실행이 허용되지 않으면, Codex가 manifest의 필요한 `skills/<name>/` 전체를 프로젝트 `.agents/skills/<name>/`로 복사하고 해시·의존을 확인하는 방법을 쓸 수 있습니다. 차단을 우회하지 않습니다.
+전체 6개를 명시하려면 `--profile all --apply`를 사용합니다. Python이 제공되지 않거나 설치 실행이 허용되지 않으면, Codex가 manifest의 `skills/<name>/` 전체를 프로젝트 `.agents/skills/<name>/`로 복사하고 해시·의존을 확인하는 방법을 쓸 수 있습니다. 차단을 우회하지 않습니다.
 
 ## 발견과 실제 사용 확인
 
