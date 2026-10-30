@@ -1,6 +1,6 @@
 # moonskill1
 
-Codex용 소규모 Skill 모음. 과제 진행에 필요한 지침만 선택해서 **현재 작업 프로젝트**에 등록합니다. 개인 모델 키·새 AI·MCP·Plugin·전역 설정·Codex 업데이트를 요구하지 않습니다. 공식 제품/대회 자료가 아닌 개인 준비 묶음입니다.
+Codex용 소규모 Skill 모음. 작업에 필요한 지침만 선택해서 **현재 작업 프로젝트**에 등록합니다. 개인 모델 키·새 AI·MCP·Plugin·전역 설정·Codex 업데이트를 요구하지 않습니다. 개인이 관리하는 독립 도구 모음입니다.
 
 ## Codex에 자연어로 한 번 요청하기
 
@@ -21,7 +21,7 @@ Codex용 소규모 Skill 모음. 과제 진행에 필요한 지침만 선택해�
 | `diagnosing-bugs` | 반복 오류 시 | 재현→원인 분리→수정→회귀 검사 |
 | `api-tester` | 업무 API 필요 시 | 허용 API의 문서·응답·페이지·오류 검사 |
 
-여러 Skill을 함께 보관·등록할 수 있으며 각 폴더는 별도 SKILL.md를 갖습니다. 등록된 모든 본문을 매 요청마다 전부 읽히지는 않습니다. 과제에 맞는 Skill만 호출합니다. 이 묶음의 `all`은 연결 검증용 선택지이며 시험 기본안은 `core`입니다. API가 필요 없으면 api-tester는 설치하지 않습니다.
+여러 Skill을 함께 보관·등록할 수 있으며 각 폴더는 별도 SKILL.md를 갖습니다. 등록된 모든 본문을 매 요청마다 전부 읽히지는 않습니다. 작업에 맞는 Skill만 호출합니다. 이 묶음의 `all`은 연결 검증용 선택지이며 기본안은 `core`입니다. API가 필요 없으면 api-tester는 설치하지 않습니다.
 
 ## 셸에서 수동 설치할 경우
 
@@ -41,7 +41,7 @@ python3 moonskill1-reference/install.py --project . --skills diagnosing-bugs --a
 python3 moonskill1-reference/install.py --project . --skills api-tester --apply
 ```
 
-가상 연결 시험에서 전체 6개를 설치하려면 `--profile all --apply`를 사용합니다. Python이 제공되지 않거나 설치 실행이 허용되지 않으면, Codex가 manifest의 필요한 `skills/<name>/` 전체를 프로젝트 `.agents/skills/<name>/`로 복사하고 해시·의존을 확인하는 방법을 쓸 수 있습니다. 차단을 우회하지 않습니다.
+가상 연결 검증에서 전체 6개를 설치하려면 `--profile all --apply`를 사용합니다. Python이 제공되지 않거나 설치 실행이 허용되지 않으면, Codex가 manifest의 필요한 `skills/<name>/` 전체를 프로젝트 `.agents/skills/<name>/`로 복사하고 해시·의존을 확인하는 방법을 쓸 수 있습니다. 차단을 우회하지 않습니다.
 
 ## 발견과 실제 사용 확인
 
@@ -54,12 +54,12 @@ python3 moonskill1-reference/install.py --project . --skills api-tester --apply
 
 ## 별도 하네스
 
-추가 실행형 하네스는 기본 설치하지 않습니다. Codex의 기존 실행 체계를 이용합니다. 필요하면 [짧은 작업 진행 지침](guides/EXAM_WORKFLOW.md)을 읽혀 과제 범위·지침 선택·검증·인계를 정리할 수 있습니다. 이 문서는 선택 자료이며 자동 실행/강제 통제 프로그램이 아닙니다.
+추가 실행형 하네스는 기본 설치하지 않습니다. Codex의 기존 실행 체계를 이용하며 작업 범위와 필요한 Skill을 실제 프로젝트에 맞춰 정합니다.
 
 ## 사용 경계와 출처
 
-실제 환경의 최신 공식 안내·과제 지시가 우선합니다. 개인 파일 업로드 대신 허용된 공개 원본 반입 경로를 사용합니다. 이 저장소는 시험 결과 통지 전까지 공개 유지하는 준비용입니다. 실제 문제·세션·데이터·결과물·인증을 이 저장소에 올리지 않습니다. 제공 AI/인증·관리 설정을 바꾸거나 자동 화면 조작·부하/파괴적 API 검사를 수행하지 않습니다.
+실제 환경의 지침·작업 계약이 우선합니다. 허용된 공개 원본 취득 경로를 사용합니다. 비공개 작업 자료·세션·데이터·결과물·인증을 이 저장소에 올리지 않습니다. 제공 AI/인증·관리 설정을 바꾸거나 자동 화면 조작·부하/파괴적 API 검사를 수행하지 않습니다.
 
-frontend-design은 Anthropic 작성 지침을 Codex가 읽는 것이며 Claude를 연결하지 않습니다. 공개 지침의 원문·라이선스·고정 버전·수정 범위는 [출처와 변경](SOURCES.md), [manifest](manifest.json), [제3자 고지](THIRD_PARTY_NOTICES.md)를 확인하세요. 설치 해시 검증은 코드 안전·시험 호환·Skill 효용 보장이 아닙니다.
+frontend-design은 Anthropic 작성 지침을 Codex가 읽는 것이며 Claude를 연결하지 않습니다. 공개 지침의 원문·라이선스·고정 버전·수정 범위는 [출처와 변경](SOURCES.md), [manifest](manifest.json), [제3자 고지](THIRD_PARTY_NOTICES.md)를 확인하세요. 설치 해시 검증은 코드 안전·대상 환경 호환·Skill 효용 보장이 아닙니다.
 
-Codex의 일반 발견/호출 방식: [OpenAI 공식 Skills 문서](https://learn.chatgpt.com/docs/build-skills). 실제 제공 시험 버전은 해당 환경에서 확인해야 합니다.
+Codex의 일반 발견/호출 방식: [OpenAI 공식 Skills 문서](https://learn.chatgpt.com/docs/build-skills). 실제 사용 버전은 해당 환경에서 확인해야 합니다.
