@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.30.2",
+  "version": "2026.10.30.3",
   "repository": "https://github.com/moon-gi-jeon/moonskill1",
   "default_profile": "all",
   "global_install": false,
@@ -123,6 +123,25 @@
         "LICENSE-APACHE.txt": "81e6f7c97b1a4dc234defbdc41ef2368f1068f18c1ff10b7b7ebcc71bb21137f",
         "LICENSE-MIT.txt": "32a1b708dae9479f646879c2f530dd9a694b466ddf43e8f00089eba56f0e34ce",
         "SKILL.md": "df5f3ed14978b34f79fc52b246a3a72dd8abcddb542afd72bb764ac6a820f806"
+      }
+    },
+    {
+      "name": "api-and-interface-design",
+      "role": "conditional",
+      "dependencies": [],
+      "source": {
+        "repository": "addyosmani/agent-skills",
+        "commit": "aeac41d4d005999432bb7312f7ff06383a91d59d",
+        "license": "MIT",
+        "original_skill_url": "https://github.com/addyosmani/agent-skills/blob/aeac41d4d005999432bb7312f7ff06383a91d59d/skills/api-and-interface-design/SKILL.md"
+      },
+      "input_snapshot_sha256": "e83d34f52ff12dd8a7c5134cd7e8140ea4541ec65e204f8a1e4cd366e30c4192",
+      "changes": [
+        "Adapt contract-first API/interface guidance to task-sized CRUD, validation, storage and frontend integration; make pagination, idempotency infrastructure and versioning conditional; use local CLI/HTTP checks and participant manual preview; no external AI or global configuration."
+      ],
+      "files": {
+        "LICENSE.upstream.txt": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7",
+        "SKILL.md": "a4e11e58b9334a98ac9c6828697f61a244f8d6166f4d55f173b5e31275c0874f"
       }
     }
   ]

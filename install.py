@@ -16,7 +16,7 @@ PROFILES = {
     'core': ['grill-me', 'grilling', 'verification-before-completion'],
     'ui': ['grill-me', 'grilling', 'verification-before-completion', 'frontend-design'],
     'all': ['grill-me', 'grilling', 'verification-before-completion',
-            'frontend-design', 'diagnosing-bugs', 'api-tester'],
+            'frontend-design', 'diagnosing-bugs', 'api-tester', 'api-and-interface-design'],
 }
 
 def sha256(path: Path) -> str:

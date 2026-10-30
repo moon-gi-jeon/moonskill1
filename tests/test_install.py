@@ -43,17 +43,18 @@ class InstallTests(unittest.TestCase):
         code,out,error=self.run_cli('--profile','core','--apply')
         self.assertEqual(code,0,error)
         self.assertEqual(set(self.installed()),set(installer.PROFILES['core']))
+        self.assertNotIn('api-and-interface-design',self.installed())
         manifest=installer.load_manifest()
         for skill in installer.choose(manifest,installer.PROFILES['core']):
             self.assertEqual(installer.inventory(self.project/'.agents/skills'/skill['name']),skill['files'])
         self.assertFalse(json.loads(out)['codex_discovery_verified'])
 
-    def test_default_installs_all_six_and_matches_manifest(self):
+    def test_default_installs_all_seven_and_matches_manifest(self):
         self.assertEqual(installer.load_manifest()['default_profile'],'all')
         code,out,error=self.run_cli('--apply')
         self.assertEqual(code,0,error)
         self.assertEqual(set(self.installed()),set(installer.PROFILES['all']))
-        self.assertEqual(len(json.loads(out)['skills']),6)
+        self.assertEqual(len(json.loads(out)['skills']),7)
         self.assertFalse(json.loads(out)['codex_discovery_verified'])
 
     def test_default_adds_optional_skills_after_existing_core(self):
@@ -66,9 +67,9 @@ class InstallTests(unittest.TestCase):
         for name,files in before.items():
             self.assertEqual(statuses[name],'already_identical')
             self.assertEqual(installer.inventory(self.project/'.agents/skills'/name),files)
-        self.assertTrue(all(statuses[n]=='install' for n in ('frontend-design','diagnosing-bugs','api-tester')))
+        self.assertTrue(all(statuses[n]=='install' for n in ('frontend-design','diagnosing-bugs','api-tester','api-and-interface-design')))
 
-    def test_all_profile_installs_six_independent_skills(self):
+    def test_all_profile_installs_seven_independent_skills(self):
         code,_,error=self.run_cli('--profile','all','--apply')
         self.assertEqual(code,0,error)
         self.assertEqual(set(self.installed()),set(installer.PROFILES['all']))
@@ -132,7 +133,7 @@ class InstallTests(unittest.TestCase):
         output=io.StringIO()
         with contextlib.redirect_stdout(output):code=installer.main(['--list'])
         self.assertEqual(code,0)
-        self.assertEqual(len(json.loads(output.getvalue())['skills']),6)
+        self.assertEqual(len(json.loads(output.getvalue())['skills']),7)
         self.assertFalse((self.project/'.agents').exists())
 
 if __name__=='__main__':unittest.main(verbosity=2)
