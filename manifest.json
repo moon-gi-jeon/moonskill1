@@ -1,0 +1,129 @@
+{
+  "version": "2026.10.30.1",
+  "repository": "https://github.com/moon-gi-jeon/moonskill1",
+  "default_profile": "core",
+  "global_install": false,
+  "harness_required": false,
+  "skills": [
+    {
+      "name": "grill-me",
+      "role": "basic",
+      "dependencies": [
+        "grilling"
+      ],
+      "source": {
+        "repository": "mattpocock/skills",
+        "commit": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+        "license": "MIT",
+        "original_skill_url": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/productivity/grill-me/SKILL.md"
+      },
+      "input_snapshot_sha256": "e82cebebe8e2d11d7c9f8ef10f34ffcf9023e4a17edd4304e09e17dc61a8df03",
+      "changes": [
+        "Replaced host-specific wrapper with a relative read of sibling grilling; removed Claude-only frontmatter; retained explicit invocation policy from existing Codex metadata."
+      ],
+      "files": {
+        "agents/openai.yaml": "c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b",
+        "LICENSE.upstream.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+        "SKILL.md": "8d03bc9d9a05d799e581a1add9a0aadc401c72c9c4d3b2731484a913853b5886"
+      }
+    },
+    {
+      "name": "grilling",
+      "role": "basic",
+      "dependencies": [],
+      "source": {
+        "repository": "mattpocock/skills",
+        "commit": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+        "license": "MIT",
+        "original_skill_url": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/productivity/grilling/SKILL.md"
+      },
+      "input_snapshot_sha256": "befdff1e27a1dfe2a294d5871169ac1afe16d983911daa4f32627514a48c1e15",
+      "changes": [
+        "Limit interview to material task decisions; inspect local facts first; make delegation conditional on available permitted tools; continue authorized work after decisions are answered."
+      ],
+      "files": {
+        "agents/openai.yaml": "1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b",
+        "LICENSE.upstream.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+        "SKILL.md": "22cdb3a652dd60267583d8aabf7cc2cf5dc557c2d0455ddc3ea26d711677510d"
+      }
+    },
+    {
+      "name": "verification-before-completion",
+      "role": "basic",
+      "dependencies": [],
+      "source": {
+        "repository": "obra/superpowers",
+        "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+        "license": "MIT",
+        "original_skill_url": "https://github.com/obra/superpowers/blob/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/skills/verification-before-completion/SKILL.md"
+      },
+      "input_snapshot_sha256": "2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3",
+      "changes": [
+        "Add task-scoped validation guidance; no zero-test/fully-skipped success; no new tooling merely to satisfy a generic checklist."
+      ],
+      "files": {
+        "LICENSE.upstream.txt": "760a1b6a1be504193f2049b8062195a9e8d26b2152e9f3a7678c9eab206fb0a4",
+        "SKILL.md": "edf636f8bcbd4e6fbabe22cb85a9aac61179d863be76660598229850a167cbec"
+      }
+    },
+    {
+      "name": "frontend-design",
+      "role": "conditional",
+      "dependencies": [],
+      "source": {
+        "repository": "anthropics/skills",
+        "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "license": "Apache-2.0",
+        "original_skill_url": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design/SKILL.md"
+      },
+      "input_snapshot_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "changes": [
+        "Retain design guidance; replace automated screenshot review with participant manual preview; prioritize actual task workflow over visual expansion."
+      ],
+      "files": {
+        "LICENSE.txt": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+        "SKILL.md": "98cdf56308c4a30379dac05e679a976efad5b43b9a1d337a91364518c62dae99"
+      }
+    },
+    {
+      "name": "diagnosing-bugs",
+      "role": "conditional",
+      "dependencies": [],
+      "source": {
+        "repository": "mattpocock/skills",
+        "commit": "59db609eb1e18aaf59b63284d0e52255aff0c63c",
+        "license": "MIT",
+        "original_skill_url": "https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/engineering/diagnosing-bugs/SKILL.md"
+      },
+      "input_snapshot_sha256": "849198df88cdb65fd0d97236604c1fca7ff2f22d2f705f9724a800d0266b118d",
+      "changes": [
+        "Replace headless-browser/HITL script requirements with local CLI/HTTP tests and participant manual preview; restrict load and external operations."
+      ],
+      "files": {
+        "agents/openai.yaml": "3e430dbe4334a87597488c060cb3dc3786bb00c9182877d6f5ec41f62490e90b",
+        "LICENSE.upstream.txt": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+        "SKILL.md": "78f98552f33f407d5bb53a901150f788b0ef325ca26dc26927dcf00b63bb0a0b"
+      }
+    },
+    {
+      "name": "api-tester",
+      "role": "conditional",
+      "dependencies": [],
+      "source": {
+        "repository": "RightNow-AI/openfang",
+        "commit": "acf2587e46be174c10200489c9a2d23a39a98aeb",
+        "license": "MIT/Apache-2.0",
+        "original_skill_url": "https://github.com/RightNow-AI/openfang/blob/acf2587e46be174c10200489c9a2d23a39a98aeb/crates/openfang-skills/bundled/api-tester/SKILL.md"
+      },
+      "input_snapshot_sha256": "d7dcba78d1b4e6173b2f48e4c6221cd45f11812643fb76cbd7d151eda1e45f89",
+      "changes": [
+        "Restrict to task-authorized business API; remove rapid rate-limit probing, secret-bearing verbose traces and alternate-network advice; no external model API."
+      ],
+      "files": {
+        "LICENSE-APACHE.txt": "81e6f7c97b1a4dc234defbdc41ef2368f1068f18c1ff10b7b7ebcc71bb21137f",
+        "LICENSE-MIT.txt": "32a1b708dae9479f646879c2f530dd9a694b466ddf43e8f00089eba56f0e34ce",
+        "SKILL.md": "df5f3ed14978b34f79fc52b246a3a72dd8abcddb542afd72bb764ac6a820f806"
+      }
+    }
+  ]
+}
